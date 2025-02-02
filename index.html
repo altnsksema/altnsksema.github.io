@@ -7,6 +7,51 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="script.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0a0a2a;
+            color: white;
+            overflow-x: hidden;
+        }
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('space-bg.jpg') no-repeat center center/cover;
+            text-align: center;
+        }
+        h1 {
+            font-size: 4rem;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #00f; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #00f, 0 0 40px #00f; }
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 50px;
+        }
+        .container img {
+            width: 200px;
+            margin-right: 20px;
+            opacity: 0;
+        }
+        .text {
+            opacity: 0;
+        }
+        .projects, .contact {
+            text-align: center;
+            padding: 50px;
+        }
+        .project-list {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="hero">
@@ -40,5 +85,14 @@
         <h2>İletişim</h2>
         <p>Bana ulaşmak için buraya bir form veya iletişim bilgileri ekleyebilirsiniz.</p>
     </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.from(".fade-in", { opacity: 0, y: -50, duration: 1.5 });
+            gsap.to(".fade-left", { opacity: 1, x: 0, duration: 1.5, scrollTrigger: ".fade-left" });
+            gsap.to(".fade-right", { opacity: 1, x: 0, duration: 1.5, scrollTrigger: ".fade-right" });
+            gsap.to(".fade-up", { opacity: 1, y: 0, duration: 1.5, scrollTrigger: ".fade-up" });
+        });
+    </script>
 </body>
 </html>

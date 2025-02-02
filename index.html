@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Portfolyom | Sema </title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
@@ -15,6 +15,7 @@
             background-color: #0a0a2a;
             color: white;
             overflow-x: hidden;
+            transition: background 0.5s, color 0.5s;
         }
         .hero {
             display: flex;
@@ -52,16 +53,43 @@
         .project-list {
             opacity: 0;
         }
+        button {
+            background: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #00f;
+            color: white;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
     </style>
 </head>
 <body>
+    <button class="theme-toggle">Dark/Light Mode</button>
     <div class="hero">
-        <h1 class="fade-in">Adınız</h1>
+        <h1 class="fade-in">Sema Altınışık</h1>
     </div>
     
     <section class="about">
         <div class="container">
-            <img src="profile.jpg" alt="Profile Picture" class="fade-left">
+            <img src="" alt="Profile Picture" class="fade-left">
             <div class="text fade-right">
                 <h2>Hakkımda</h2>
                 <p>Kendiniz hakkında kısa bir açıklama.</p>
@@ -84,7 +112,15 @@
 
     <section class="contact">
         <h2>İletişim</h2>
-        <p>Bana ulaşmak için buraya bir form veya iletişim bilgileri ekleyebilirsiniz.</p>
+        <form>
+            <label for="name">Adınız:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">E-posta:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="message">Mesajınız:</label>
+            <textarea id="message" name="message" required></textarea><br>
+            <button type="submit">Gönder</button>
+        </form>
     </section>
 
     <script>
@@ -94,6 +130,10 @@
             gsap.from(".fade-left", { opacity: 0, x: -100, duration: 1.5, scrollTrigger: { trigger: ".fade-left", start: "top 80%" }});
             gsap.from(".fade-right", { opacity: 0, x: 100, duration: 1.5, scrollTrigger: { trigger: ".fade-right", start: "top 80%" }});
             gsap.from(".fade-up", { opacity: 0, y: 50, duration: 1.5, scrollTrigger: { trigger: ".fade-up", start: "top 80%" }});
+        });
+        
+        document.querySelector(".theme-toggle").addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
         });
     </script>
 </body>

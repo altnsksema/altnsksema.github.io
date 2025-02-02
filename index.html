@@ -6,6 +6,7 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <script src="script.js" defer></script>
     <style>
         body {
@@ -88,10 +89,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollTrigger);
             gsap.from(".fade-in", { opacity: 0, y: -50, duration: 1.5 });
-            gsap.to(".fade-left", { opacity: 1, x: 0, duration: 1.5, scrollTrigger: ".fade-left" });
-            gsap.to(".fade-right", { opacity: 1, x: 0, duration: 1.5, scrollTrigger: ".fade-right" });
-            gsap.to(".fade-up", { opacity: 1, y: 0, duration: 1.5, scrollTrigger: ".fade-up" });
+            gsap.from(".fade-left", { opacity: 0, x: -100, duration: 1.5, scrollTrigger: { trigger: ".fade-left", start: "top 80%" }});
+            gsap.from(".fade-right", { opacity: 0, x: 100, duration: 1.5, scrollTrigger: { trigger: ".fade-right", start: "top 80%" }});
+            gsap.from(".fade-up", { opacity: 0, y: 50, duration: 1.5, scrollTrigger: { trigger: ".fade-up", start: "top 80%" }});
         });
     </script>
 </body>
